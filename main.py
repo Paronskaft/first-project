@@ -23,7 +23,9 @@ for url in open(fname):
         soup = BS(html, "html.parser")
         msource = soup.find('nfj-posting-requirements', id='posting-requirements')
         esource = soup.find('nfj-posting-requirements', id='posting-nice-to-have')
-    except: pass
+    except: 
+        print(f'Invalid url / job offer no longer available : {url}')
+        pass
     # creating list of skills from BS types
     mskills = msource.find_all('common-posting-item-tag')
     mskills_lst = [(tag.text).strip().lower() for tag in mskills]
